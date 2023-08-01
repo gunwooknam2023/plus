@@ -1,10 +1,13 @@
 package com.example.plus.dto;
 
+import com.example.plus.entity.UserRoleEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class SignupRequestDto {
 
     @NotBlank
@@ -18,4 +21,6 @@ public class SignupRequestDto {
     @NotBlank
     @Pattern(regexp = "^.{4,}$")
     private String checkpassword;
+
+    private UserRoleEnum role;
 }
