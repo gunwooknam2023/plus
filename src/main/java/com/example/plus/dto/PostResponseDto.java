@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class PostResponseDto {
+    private Long id;
     private String title; // 제목
     private String username; // 작성자
     private String contents; // 내용
@@ -16,6 +17,7 @@ public class PostResponseDto {
     private LocalDateTime modifiedAt; // 수정시간
 
     public PostResponseDto(Post post) {
+        this.id = post.getId();
         this.title = post.getTitle();
         this.username = post.getUser().getUsername();
         this.contents = post.getContents();
