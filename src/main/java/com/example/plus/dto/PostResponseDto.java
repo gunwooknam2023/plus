@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -15,6 +17,7 @@ public class PostResponseDto {
     private String contents; // 내용
     private LocalDateTime createAt; // 생성시간
     private LocalDateTime modifiedAt; // 수정시간
+    private List<CommentResponseDto> commentResponseDtos; // 댓글목록
 
     public PostResponseDto(Post post) {
         this.id = post.getId();
@@ -23,5 +26,7 @@ public class PostResponseDto {
         this.contents = post.getContents();
         this.createAt = post.getCreatedAt();
         this.modifiedAt = post.getModifiedAt();
+        this.commentResponseDtos = post.getCommentList().stream()
+                .map(CommentResponseDto::new).collect(Collectors.toList());
     }
 }
